@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import src.masks as masks
 
 
@@ -13,6 +15,16 @@ def mask_account_card(user_payment_details: str) -> str:
     else:
         upd[-1] = masks.get_mask_account(int(upd[-1]))
     return " ".join(upd)
+
+
+def get_date(user_date: str) -> str:
+    """
+    Функция преобразования даты из стандартного представления времени
+    :param user_date: дата из стандартного представления времени
+    :return: дата в формате "ДД.ММ.ГГГГ"
+    """
+    date = datetime.fromisoformat(user_date)
+    return date.strftime("%d.%m.%Y")
 
 
 if __name__ == "__main__":
