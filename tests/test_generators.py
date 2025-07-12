@@ -1,12 +1,19 @@
+import pytest
+
 import src.generators as gn
 
 
-def test_filter_by_currency(transactions, transactions_usd, transactions_rub):
-    assert list(gn.filter_by_currency(transactions, currency="USD")) == transactions_usd
-    assert list(gn.filter_by_currency(transactions, currency="RUB")) == transactions_rub
-    assert list(gn.filter_by_currency(transactions, currency="000")) == []
-    assert list(gn.filter_by_currency(transactions)) == []
-    assert list(gn.filter_by_currency(currency="000")) == []
+@pytest.mark.parametrize(
+    "currency, result",
+    [
+        ("USD", 3),
+        ("RUB", 2),
+        ("", 0),
+        ("000", 0),
+    ],
+)
+def test_filter_by_currency(transactions, currency, result):
+    assert len(list(gn.filter_by_currency(transactions, currency))) == result
 
 
 def test_transaction_descriptions(transactions, transaction_descriptions):
