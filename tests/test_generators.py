@@ -11,3 +11,7 @@ def test_filter_by_currency(transactions, transactions_usd, transactions_rub):
 
 def test_transaction_descriptions(transactions, transaction_descriptions):
     assert list(gn.transaction_descriptions(transactions)) == transaction_descriptions
+
+
+def test_card_number_generator(card_number):
+    assert list(gn.card_number_generator(1, 5)) == card_number

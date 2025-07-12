@@ -18,3 +18,16 @@ def transaction_descriptions(transactions: list[dict] = []) -> Generator[dict, A
     :return: описания каждой операции по очереди
     """
     return (tr["description"] for tr in transactions)
+
+
+def card_number_generator(start: int, stop: int) -> Generator[str, Any, None]:
+    """
+    Функция, которая выдает номера банковских карт в формате XXXX XXXX XXXX XXXX
+    :param start: начальный номер генерации
+    :param stop: конечный номер генерации
+    :return: номера банковских карт в формате XXXX XXXX XXXX XXXX
+    """
+    numbers = []
+    for n in range(start, stop + 1):
+        numbers.append(str(n).rjust(16, "0"))
+    return (f"{number[:4]} {number[4:8]} {number[8:12]} {number[12:]}" for number in numbers)
