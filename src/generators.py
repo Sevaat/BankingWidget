@@ -17,7 +17,9 @@ def transaction_descriptions(transactions: list[dict] = []) -> Generator[dict, A
     :param transactions: данные транзакций
     :return: описания каждой операции по очереди
     """
-    return (tr["description"] for tr in transactions)
+    for transaction in transactions:
+        if "description" in transaction:
+            yield transaction["description"]
 
 
 def card_number_generator(start: int, stop: int) -> Generator[str, Any, None]:
