@@ -6,9 +6,10 @@ def test_log(capsys):
     def division(a, b):
         return a / b
 
-    division(1, 2)
+    result = division(1, 2)
     captured = capsys.readouterr()
     assert captured.out == "division ok\n"
+    assert result == 0.5
 
     division(1, 0)
     captured = capsys.readouterr()
