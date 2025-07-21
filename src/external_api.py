@@ -23,7 +23,3 @@ def currency_conversions(transaction: dict) -> float:
     result = json.loads(response.text)
 
     return float(result["result"])
-
-if __name__ == '__main__':
-    mock_data = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}},}
-    print(currency_conversions(mock_data))
