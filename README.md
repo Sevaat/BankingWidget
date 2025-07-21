@@ -145,4 +145,14 @@ def my_function(x, y): return x / y
 Ввод 1: my_function(1, 2)  
 Вывод 1: my_function ok  
 Ввод 2: my_function(1, 0)  
-Вывод 2: my_function error: division by zero. Inputs: (1, 0), {}  
+Вывод 2: my_function error: division by zero. Inputs: (1, 0), {}
+
+### Чтение файла json
+
+Ввод: utils.transactions_from_json(путь json-файлу)  
+Вывод: [{"key": "value"}]
+
+### Конвертация суммы транзакции в рубли через API
+
+Ввод: external_api.currency_conversions(mock_data = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}},})  
+Вывод: 78.52
