@@ -1,4 +1,4 @@
-import csv
+import pandas as pd
 
 
 def csv_reader(filename: str = "") -> list[dict]:
@@ -8,9 +8,8 @@ def csv_reader(filename: str = "") -> list[dict]:
     :return: список транзакций
     """
     try:
-        with open(filename) as file:
-            reader = csv.DictReader(file, delimiter=";")
-            transactions = [row for row in reader]
-            return transactions
+        reader = pd.read_csv(filename, delimiter=";")
+        transactions = reader.to_dict(orient="records")
+        return transactions
     except Exception:
         return []

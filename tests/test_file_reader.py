@@ -1,22 +1,23 @@
-import csv
-from unittest.mock import mock_open, patch
+from unittest.mock import patch
+
+import pandas
 
 import src.file_reader as fr
 
 
-def test_csv_reader(transaction_list, transaction_csv):
+def test_csv_reader():
     # корректное чтение
-    with patch("builtins.open", mock_open(read_data=transaction_csv)):
-        result = fr.csv_reader("dummy_path.csv")
-    assert result == transaction_list
+    test_data = pandas.DataFrame([{"a": 1, "b": 2}, {"a": 3, "b": 4}])
+    with patch("pandas.read_csv", return_value=test_data):
+        result = fr.csv_reader("valid.csv")
+        assert result == [{"a": 1, "b": 2}, {"a": 3, "b": 4}]
 
-    # ошибки парсинга csv-файла
-    with patch("builtins.open", mock_open(read_data="invalid csv")):
-        with patch("csv.DictReader", side_effect=csv.Error("Error", "doc", 0)):
-            result = fr.csv_reader("invalid.csv")
+    # ошибки парсинга excel-файла
+    with patch("pandas.read_csv", side_effect=pandas.errors.EmptyDataError()):
+        result = fr.csv_reader("invalid.csv")
     assert result == []
 
     # проверка на отсутствие файла
-    with patch("builtins.open", side_effect=FileNotFoundError):
+    with patch("pandas.read_csv", side_effect=FileNotFoundError):
         result = fr.csv_reader("nonexistent.csv")
     assert result == []
