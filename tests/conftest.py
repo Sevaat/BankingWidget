@@ -1,3 +1,5 @@
+import logging
+
 import pytest
 
 
@@ -108,3 +110,8 @@ def card_number():
         "0000 0000 0000 0004",
         "0000 0000 0000 0005",
     ]
+
+
+@pytest.fixture(autouse=True)
+def disable_logging():
+    logging.disable(logging.CRITICAL)

@@ -1,8 +1,11 @@
 import logging
+import os
 
 logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(filename="../logs/masks.log", mode="w")
+log_dir = os.path.abspath("../logs")
+os.makedirs(log_dir, exist_ok=True)
+file_handler = logging.FileHandler(filename=f"{log_dir}/masks.log", mode="w")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
