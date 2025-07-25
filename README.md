@@ -16,6 +16,7 @@ src/generators.py,
 src/file_reader.py,  
 src/utils.py  
 src/search_engine.py  
+src/counter.py  
 
 ## Авторы и благодарности
 
@@ -183,4 +184,4 @@ def my_function(x, y): return x / y
 ### Подсчет операций по описанию
 
 Ввод: counter.category_counter(transactions, [description1, description2])  
-Вывод:  {description1: кол-во операций с описанием description1, ...}  
+Вывод:  {description1: кол-во операций с описанием description1, ...}
