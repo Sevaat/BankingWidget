@@ -7,7 +7,14 @@
 ## Установка и запуск
 
 Установка не требуется.
-Запуск производится через файл main.py или файлы src/masks.py, src/widget.py, src/processing.py, src/generators.
+Запуск производится через файл main.py  
+Или файлы:  
+src/masks.py,  
+src/widget.py,  
+src/processing.py,  
+src/generators.py,  
+src/file_reader.py,  
+src/utils.py  
 
 ## Авторы и благодарности
 
@@ -156,3 +163,13 @@ def my_function(x, y): return x / y
 
 Ввод: external_api.currency_conversions(mock_data = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}},})  
 Вывод: 78.52
+
+### Получение списка транзакций из csv файла
+
+Ввод: file_reader.csv_reader(путь до csv-файла)  
+Вывод: [{"a": 1, "b": 2}, {"a": 3, "b": 4}]  
+
+### Получение списка транзакций из excel файла
+
+Ввод: file_reader.excel_reader(путь до excel-файла)  
+Вывод: [{"a": 1, "b": 2}, {"a": 3, "b": 4}]  
