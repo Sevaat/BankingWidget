@@ -15,6 +15,7 @@ src/processing.py,
 src/generators.py,  
 src/file_reader.py,  
 src/utils.py  
+src/search_engine.py  
 
 ## Авторы и благодарности
 
@@ -173,3 +174,13 @@ def my_function(x, y): return x / y
 
 Ввод: file_reader.excel_reader(путь до excel-файла)  
 Вывод: [{"a": 1, "b": 2}, {"a": 3, "b": 4}]  
+
+### Получение списка транзакций с заданным описанием
+
+Ввод: search_engine.search_by_string(transactions, description)  
+Вывод: список транзакций из transactions с описанием description
+
+### Подсчет операций по описанию
+
+Ввод: counter.category_counter(transactions, [description1, description2])  
+Вывод:  {description1: кол-во операций с описанием description1, ...}  
